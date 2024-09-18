@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan Daerah Sumatra Barat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+        <!-- Audio yang autoplay dan loop -->
+        <audio id="background-music" autoplay loop>
+            <source src="mozart.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+    <div class="header">
+        <div class="header-logo">
+            <img src="logominang.png" alt="Logo Perpustakaan">
+        </div>
+        <div class="header-title">
+            <a href="#home">Perpustakaan Daerah Sumatra Barat</a>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="nav-item">
+            <a href="#home">Beranda</a>
+        </div>
+        <div class="nav-item">
+            <a href="#buku">Buku</a>
+        </div>
+        <div class="nav-item">
+            <a href="#kontak">Kontak</a>
+        </div>
+    </div> <br> <br> <br> <br>
+
+    <div id="home" class="konten">
+        <h1>Selamat Datang di Perpustakaan Daerah</h1>
+        <p>Perpustakaan Daerah Sumatra Barat menyediakan berbagai koleksi buku yang dapat Anda pinjam dan baca. Jelajahi koleksi kami di halaman Buku.</p>
+    </div> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+    <div id="buku" class="konten">
+        <h1>Daftar Buku</h1>
+        <table class="tabel">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Cover</th>
+                    <th>Judul</th>
+                    <th>Penulis</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="bumimanusia.jpg" alt="Bumi Manusia"></td>
+                    <td>Bumi Manusia</td>
+                    <td>Pramoedya Ananta Toer</td>
+                    <td>Terpinjam</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><img src="recto.jpg" alt="Rectoverso"></td>
+                    <td>Rectoverso</td>
+                    <td>Dee Lestari</td>
+                    <td>Terpinjam</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><img src="attaisir.jpg" alt="At-Tafsir"></td>
+                    <td>At-Tafsir, hafal Qur'an dalam 30 hari</td>
+                    <td>Adi Hidayat</td>
+                    <td>Terpinjam</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> <br> <br> <br> <br> <br> <br> <br>
+
+    <section class="home" id="kontak">
+        <div class="content">
+            <h1>Kontak</h1>
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="name" placeholder="Nama" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <textarea id="message" placeholder="Pesan" required></textarea>
+                <select id="platform" required>
+                    <option value="">Pilih Platform</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="tiktok">TikTok</option>
+                </select>
+                <button type="submit">Kirim</button>
+            </form>
+        </div>
+    </section> <br> <br> <br> <br> <br> <br>
+    
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Mencegah form submit default
+        
+            // Mengambil nilai dari input dan textarea
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const platform = document.getElementById('platform').value;
+        
+            let url;
+        
+            // Menentukan URL berdasarkan platform yang dipilih
+            switch (platform) {
+                case 'whatsapp':
+                    const phoneNumber = '6282267403010'; // Pastikan format nomor tanpa "+" dan awali dengan kode negara
+                    const whatsappMessage = `Halo, saya ${name} (${email}).\n\nPesan:\n${message}`;
+                    url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                    break;
+                case 'instagram':
+                    const instagramUsername = 'syahrilmaymubdimandai'; // Ganti dengan username Instagram Anda
+                    url = `https://instagram.com/${instagramUsername}`;
+                    break;
+                case 'facebook':
+                    const facebookPageId = 'pahlawan.senja.146'; // Ganti dengan ID halaman Facebook Anda
+                    url = `https://www.facebook.com/${facebookPageId}`;
+                    break;
+                case 'tiktok':
+                    const tiktokUsername = 'itsmesyahril25'; // Ganti dengan username TikTok Anda
+                    url = `https://www.tiktok.com/@${tiktokUsername}`;
+                    break;
+                default:
+                    alert('Pilih platform pengiriman pesan.');
+                    return;
+            }
+        
+            // Membuka URL
+            window.open(url, '_blank');
+        });
+        
+        </script>
+
+</body>
+</html>
